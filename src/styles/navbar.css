@@ -1,0 +1,25 @@
+.navbar {
+  background-color: var(--secondary-backrgound-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &.section{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  ul{
+    display:flex;
+    align-items:center;
+    list-style:none;
+    padding-left:0;
+    li{
+      margin-right: 1rem;
+      a{
+        color: var(--button-text-color);
+      }
+      a:hover{
+        color: var(--link-hover-color);
+      }
+    }
+  }
+}
