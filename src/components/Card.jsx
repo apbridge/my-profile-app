@@ -11,9 +11,9 @@ const Card = ({ img, name, title, email }) => {
                 <p>{name}</p>
                 <p>{title}</p>
                 <p><a href={`mailto:${email}`}>{email}</a></p>
-            </div>
+            </div> 
         </div>
-    );
+    ); 
 }
 Card.propTypes = {
     img: PropTypes.string.isRequired,

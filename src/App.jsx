@@ -13,7 +13,7 @@ const App = () => {
     {
       img: image_man,
       name:'John Doe',
-      title:'Software Engineer',
+      title:'Software Engineer', 
       email:'a@a.com'
     },
     {

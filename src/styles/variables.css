@@ -13,7 +13,7 @@ body{
     /* font */
     --font-family: 'Roboto', sans-serif;
     /* break points */
-    --mobile: 768px;
+    --mobile: 768px; 
     --tablet: 1024px;
     /* border */
     --border-radius: 8px;

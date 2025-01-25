@@ -175,7 +175,7 @@ body {
         max-width: 100%;
       }
       .flex-container{
-         flex-direction:column
+         flex-direction:column 
       }
     }
     /* profile container */
