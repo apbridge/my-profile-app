@@ -1,3 +1,45 @@
 @import "../src/styles/reset.css";
 @import "../src/styles/variables.css";
 @import "../src/styles/global.css";
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns items to the left */
+    gap: 20px; /* Adds spacing between elements */
+    flex-wrap: nowrap; /* Prevents wrapping */
+    width: 100%; /* Ensures full width */
+    padding-bottom: 20px; 
+  }
+  
+  .filter--select,
+  .filter--search {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .filter--select label,
+  .filter--search label {
+    white-space: nowrap; /* Prevents labels from breaking into new lines */
+  }
+  
+  .filter--search input {
+    padding: 5px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 36px; /* Matches the height of input/select */
+    display: flex;
+    align-items: center;
+  }
+  
+  button:hover {
+    background-color: #d43f3f;
+  }
+  
