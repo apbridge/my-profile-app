@@ -7,6 +7,7 @@ import image_woman from "./assets/headshot-woman2.png";
 import Card from "./components/Card";
 import Wrapper from "./components/Wrapper";
 import {useState} from "react";
+import ProfileForm from "./components/ProfileForm";
 
 const App = () => {
   const profiles =[
@@ -91,6 +92,9 @@ const App = () => {
        </Wrapper>
       <Wrapper>
           <About />
+      </Wrapper>
+      <Wrapper>
+        <ProfileForm />
       </Wrapper>
       <Wrapper>
           <div className="filter-wrapper">
