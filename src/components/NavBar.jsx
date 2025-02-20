@@ -1,35 +1,25 @@
-import { useState, useEffect } from "react";
-import style from '../styles/navbar.module.css';
-const NavBar = () => {
-    const [darkMode, setDarkMode] = useState(() => {
-        return localStorage.getItem("darkMode") === "true";
-      });
-    
-      useEffect(() => {
-        if (darkMode) {
-          document.body.classList.add("dark-mode");
-        } else {
-          document.body.classList.remove("dark-mode");
-        }
-        localStorage.setItem("darkMode", darkMode);
-      }, [darkMode]);
-    return (
-        <nav className={`${style.navbar} section`}>
-            <ul>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Profiles</a>
-                </li>
-            </ul>
-            <button onClick={() => setDarkMode(!darkMode)} className={style["mode-toggle"]}>
-                {darkMode ? "Light" : "Dark"}
-            </button>
-        </nav>
-    );
-}
-export default NavBar;
+import styles from "../styles/navbar.module.css";
+import { Link } from "react-router-dom";
+
+const Navbar = ({ mode, updateMode }) => {
+  return (
+    <nav className={`${styles["navbar"]}`}>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+        <Link to="/about">About</Link>
+        </li>
+        <li>
+        <Link to="/add-profile">Add Profile</Link>
+        </li>
+      </ul>
+      <button onClick={updateMode}>
+        {mode === "light" ? "Dark Mode" : "Light Mode"}
+      </button>
+    </nav>
+  );
+};
+
+export default Navbar;
