@@ -16,3 +16,4 @@ export const ModeProvider = ({ children }) => {
         </ModeContext.Provider>
     )
 };  
+export default ModeContext;
