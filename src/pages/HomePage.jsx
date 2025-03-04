@@ -7,37 +7,43 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import styles from "../styles/home.module.css";
 import { Link } from "react-router-dom";
+import {initialState, homeReducer} from "../reducers/homeReducer";
 
 const HomePage = () => {
-  const [titles, setTitles] = useState([]);
-  const [title, setTitle] = useState("");
-  const [search, setSearch] = useState("");
-  const [profiles, setProfiles] = useState([]);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(1);
+  //const [titles, setTitles] = useState([]);
+  //const [title, setTitle] = useState("");
+  //const [search, setSearch] = useState("");
+  //const [profiles, setProfiles] = useState([]);
+  //const [page, setPage] = useState(1);
+  //const [count, setCount] = useState(1);
+  const [state, dispatch] = useReducer(homeReducer, initialState);
+  const {titles, title, search, profiles, page, count} = state;
 
   // get titles
   useEffect(() => {
     fetch("https://web.ics.purdue.edu/~apbridge/profile-app/get-titles.php")
       .then((res) => res.json())
       .then((data) => {
-        setTitles(data.titles);
+        //setTitles(data.titles);
+        dispatch({type: "SET_TITLES", payload: data.titles});
       });
   }, []);
 
   //update the title on change of the drowndrop
   const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-    setPage(1);
+    //setTitle(event.target.value);
+    //setPage(1);
+    dispatch({type: "SET_TITLE", payload: event.target.value});
   };
 
   //update the search on change of the input
   const handleSearchChange = (event) => {
-    setSearch(event.target.value);
-    setPage(1);
+    // setSearch(event.target.value);
+    // setPage(1);
+    dispatch({type: "SET_SEARCH", payload: event.target.value});
   };
   //fetch the data from the server
   useEffect(() => {
@@ -46,16 +52,18 @@ const HomePage = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setProfiles(data.profiles);
-        setCount(data.count);
-        setPage(data.page);
+        // setProfiles(data.profiles);
+        // setCount(data.count);
+        // setPage(data.page);
+        dispatch({type: "FETCH_DATA", payload: data});
       });
   }, [title, search, page]);
   //clear the title and search
   const handleClear = () => {
-    setTitle("");
-    setSearch("");
-    setPage(1);
+    // setTitle("");
+    // setSearch("");
+    // setPage(1);
+    dispatch({type: "CLEAR_FILTERS"});
   };
 
   const buttonStyle = {
@@ -101,7 +109,7 @@ const HomePage = () => {
       {count === 0 && <p>No profiles found!</p>}
       {count > 10 && (
         <div className={styles["pagination"]}>
-          <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+          <button onClick={() => dispatch({type: "SET_PAGE", payload: page - 1})} disabled={page === 1}>
             <span className="sr-only">Previous</span>
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
@@ -109,7 +117,7 @@ const HomePage = () => {
             {page}/{Math.ceil(count / 10)}
           </span>
           <button
-            onClick={() => setPage(page + 1)}
+            onClick={() => dispatch({type: "SET_PAGE", payload: page + 1})}
             disabled={page >= Math.ceil(count / 10)}
           >
             <span className="sr-only">Next</span>
