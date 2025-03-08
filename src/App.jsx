@@ -11,14 +11,14 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import { useState, useEffect } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import { ModeContext } from "./contexts/ModeContext";
+import { useMode } from "./contexts/ModeContext";
 import { useContext } from "react";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 
 const App = () => {
-  const { mode } = useContext(ModeContext);
+  const { mode } = useMode();
 
   return (
     <AuthProvider>

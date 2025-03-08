@@ -1,17 +1,18 @@
 export const initialState = {
-    titles: [],
+    titles: "",
     title: "",
     search: "",
     profiles: [],
     page: 1,
     count: 0,
-}
+};
+
 export const homeReducer = (state, action) => {
     switch (action.type) {
         case "SET_TITLES":
-            return{
+            return {
                 ...state,
-                titles: action.payload,
+                title: action.payload
             };
         case "SET_TITLE":
             return {
@@ -25,6 +26,7 @@ export const homeReducer = (state, action) => {
                 search: action.payload,
                 page: 1,
             };
+
         case "FETCH_DATA":
             return {
                 ...state,
@@ -32,6 +34,7 @@ export const homeReducer = (state, action) => {
                 count: action.payload.count,
                 page: action.payload.page,
             };
+
         case "CLEAR_FILTERS":
             return {
                 ...state,
@@ -39,6 +42,7 @@ export const homeReducer = (state, action) => {
                 search: "",
                 page: 1,
             };
+
         case "SET_PAGE":
             return {
                 ...state,
@@ -47,4 +51,4 @@ export const homeReducer = (state, action) => {
         default:
             return state;
     }
-}
+};
