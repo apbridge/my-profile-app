@@ -15,11 +15,11 @@ import { useMode } from "./contexts/ModeContext";
 import { useContext } from "react";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import {lazy, Suspense} from "react";
 
 const App = () => {
   const { mode } = useMode();
-
+  const LazyComponent = lazy(() => import("./pages/ProfileDetailPage"));
   return (
     <AuthProvider>
       <HashRouter>
@@ -36,7 +36,7 @@ const App = () => {
               </ProtectedRoute>
             } />
             <Route path="/profile/:id" element={<ProfileLayoutPage />} >
-              <Route index element={<ProfileDetailPage />} />
+              <Route index element={<Suspense fallback={<div>Loading...</div>}><LazyComponent /></Suspense>} />
               <Route path="edit" element={
                 <ProtectedRoute>
                   <ProfileEditPage />

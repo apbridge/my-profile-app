@@ -12,6 +12,8 @@ import styles from "../styles/home.module.css";
 import { Link } from "react-router-dom";
 // import { initialState, homeReducer } from "../reducers/homeReducer";
 import useHomePage from "../hooks/homePageHook";
+import Filters from "../components/Filters";
+import {useCallback, useMemo} from "react";
 
 const HomePage = () => {
   const {state, dispatch} = useHomePage();
@@ -19,52 +21,31 @@ const HomePage = () => {
   const { titles, title, search, profiles, page, count } = state;
 
   //update the title on change of the drowndrop
-  const handleTitleChange = (event) => {
+  const handleTitleChange = useCallback((event) => {
     dispatch({ type: "SET_TITLE", payload: event.target.value });
-  };
+  }, []);
 
   //update the search on change of the input
-  const handleSearchChange = (event) => {
+  const handleSearchChange = useCallback((event) => {
     dispatch({ type: "SET_SEARCH", payload: event.target.value });
-  };
+  }, []);
   //clear the title and search
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
     dispatch({ type: "CLEAR_FILTER" });
-  };
+  }, []);
 
-  const buttonStyle = {
-    border: "1px solid #ccc",
-  };
+  const titlesValue = useMemo(() => titles, [titles]);
 
   return (
     <Wrapper>
       <h1>Profile App</h1>
-      <div className={styles["filter-wrapper"]}>
-        <div className={styles["filter--select"]}>
-          <label htmlFor="title-select">Select a title:</label>
-          <select id="title-select" onChange={handleTitleChange} value={title}>
-            <option value="">All</option>
-            {titles.map((title) => (
-              <option key={title} value={title}>
-                {title}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={styles["filter--search"]}>
-          <label htmlFor="search">Search by name:</label>
-          <input
-            type="text"
-            id="search"
-            onChange={handleSearchChange}
-            value={search}
-          />
-        </div>
-        <button onClick={handleClear} style={buttonStyle}>
-          <span className="sr-only">Reset</span>
-          <FontAwesomeIcon icon={faXmark} />
-        </button>
-      </div>
+      <Filters
+        titles={titlesValue}
+        title = {title}
+        search={search}
+        handleTitleChange={handleTitleChange}
+        handleSearchChange={handleSearchChange}
+        handleClear={handleClear}/>
       <div className={styles["profile-cards"]}>
         {profiles.map((profile) => (
           <Link to={`/profile/${profile.id}`} key={profile.id}>
