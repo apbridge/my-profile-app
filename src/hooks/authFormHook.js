@@ -1,9 +1,12 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import {useDispatch} from "react-redux";
+import {login} from "../redux/slices/authSlice.js";
 
 function useAuthForm(isRegister){
-    const { login } = useAuth();
+    // const { login } = useAuth();
+    const dispatch = useDispatch();
     const [data, setData] = useState({
       username: "",
       password: "",
@@ -43,7 +46,8 @@ function useAuthForm(isRegister){
             });
             setSuccessMessage(data.success);
             setError("");
-            login();
+            // login();
+            dispatch(login());
             navigate("/");
           } else {
             setError(data.error);
