@@ -11,9 +11,12 @@
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/material": "^7.0.1",
     "@reduxjs/toolkit": "^2.6.1",
     "gh-pages": "^6.3.0",
     "prop-types": "^15.8.1",

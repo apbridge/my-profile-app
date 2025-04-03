@@ -1,0 +1,41 @@
+{
+    "greetings": {
+        "patterns": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
+        "responses": [
+            "Hey there! How's your day going?",
+            "Hello! What's on your mind?",
+            "Hi! How can I assist you today?"
+        ]
+    },
+    "farewells": {
+        "patterns": ["bye", "goodbye", "see you", "good night"],
+        "responses": [
+            "Take care! See you soon!",
+            "Bye-bye! Have a fantastic day!",
+            "Goodnight! Sleep well and take care!"
+        ]
+    },
+    "thanks": {
+        "patterns": ["thanks", "thank you", "appreciate it"],
+        "responses": [
+            "Anytime! Happy to help.",
+            "You're very welcome!",
+            "No worries! Glad I could assist."
+        ]
+    },
+    "help": {
+        "patterns": ["help", "what can you do", "capabilities"],
+        "responses": [
+            "I can chat with you, answer simple questions, and keep the conversation going!",
+            "Need something? I can respond to greetings, farewells, and basic questions.",
+            "I'm here to assist! Try asking about greetings, goodbyes, or how I can help."
+        ]
+    },
+    "default": {
+        "responses": [
+            "Hmm... I'm not sure I got that. Can you try rewording?",
+            "Interesting! Could you clarify what you mean?",
+            "I don't quite understand. Can you say it differently?"
+        ]
+    }
+}
